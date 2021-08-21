@@ -1,0 +1,19 @@
+{
+  "name": "20210821",
+  "version": "1.0.0",
+  "description": "리액트 연습",
+  "main": "index.js",
+  "scripts": {
+    "test": "# 리액트 연습 -> <h1>리액트 연습</h1>"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeonga1226/20210821"
+  },
+  "author": "1. ol",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^17.0.2"
+  },
+  "devDependencies" : {} 
+}
