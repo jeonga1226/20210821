@@ -1,0 +1,31 @@
+{
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "plugins": ["react", "import", "node", "promise", "standard", "react-hooks"],
+    "settings": {
+      "react": {
+        "createClass": "createReactClass",
+        "pragma": "React",
+        "version": "detect"
+      }
+    },
+    "env": {                // 브라우저에서도 돌아가고 node에서도 돌아가게 환경설정
+      "browser": true,      //  최상위 객체 : window
+      "node": true,         // 최상위 객체 : global
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended",
+    ],  
+    "rules": {              
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
+      "no-console": "warn"
+    }
+  }
