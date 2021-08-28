@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "# 리액트 연습 -> <h1>리액트 연습</h1>",
-    "build": "webpack --mode=production"
+    "build": "webpack --mode=production",
+    "dev" : "webpack serve --mode=development"
   },
   "repository": {
     "type": "git",

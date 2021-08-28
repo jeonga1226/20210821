@@ -1,4 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import App from './App'
 
-ReactDOM.render(<div>Hello React</div>, document.getElementById('app')) // index.html 에 id="app"에 그릴거야
+ReactDOM.render(<App />, document.getElementById('app')) 
