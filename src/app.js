@@ -5,6 +5,7 @@ import TodoPage from './pages/Todo'
 import ErrorPage from './pages/Error'
 import ResetStyles from './components/ResetStyles'
 
+import { TodoContextProvider } from './components/context'
 const ROUTES = {
   TODO: '/',
   SIGNUP: '/signup',
@@ -18,16 +19,18 @@ function App() {
     <>
       <ResetStyles />
       <BrowserRouter>
-        <Switch>
-          {/* / 나 /todo 모두 / 이니까 /로 들어왔을 땐 todo 페이지*/}
-          <Route exact path={ROUTES.TODO}>
-            <TodoPage />
-          </Route>
-          <Route>
-            {/* 그 외에 정의되지 않은 페이지는 error page */}
-            <ErrorPage />
-          </Route>
-        </Switch>
+        <TodoContextProvider>
+          <Switch>
+            {/* / 나 /todo 모두 / 이니까 /로 들어왔을 땐 todo 페이지*/}
+            <Route exact path={ROUTES.TODO}>
+              <TodoPage />
+            </Route>
+            <Route>
+              {/* 그 외에 정의되지 않은 페이지는 error page */}
+              <ErrorPage />
+            </Route>
+          </Switch>
+        </TodoContextProvider>
       </BrowserRouter>
     </>
   )

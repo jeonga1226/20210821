@@ -1,5 +1,4 @@
 import React from 'react'
-
 import styled from 'styled-components'
 
 const Container = styled.ul`
@@ -27,6 +26,7 @@ const ToggleButton = styled.input`
   margin: auto 0;
   border: none;
   appearance: none;
+
   ${({ completed }) =>
     completed &&
     `
@@ -44,6 +44,7 @@ const Label = styled.label`
   display: block;
   line-height: 1.2;
   transition: color 0.4s;
+
   ${({ completed }) =>
     completed &&
     `
@@ -73,25 +74,24 @@ const DeleteButton = styled.button`
     line-height: 1.1;
   }
 `
-
-function List() {
+// 여기부터 시작
+function List({ todos, onUpdateTodo, onDeleteTodo }) {
+  // 다음주에 설명 key
   return (
     <Container>
-      <Item>
-        <ToggleButton type="checkbox" />
-        <Label>아이유 뮤비보기</Label>
-        <DeleteButton />
-      </Item>
-      <Item>
-        <ToggleButton type="checkbox" />
-        <Label>아이유 뮤비보기</Label>
-        <DeleteButton />
-      </Item>
-      <Item>
-        <ToggleButton type="checkbox" />
-        <Label>아이유 뮤비보기</Label>
-        <DeleteButton />
-      </Item>
+      {todos.map((todo) => {
+        return (
+          <Item key={todo.id}>
+            <ToggleButton
+              type="checkbox"
+              completed={todo.isDone}
+              onClick={() => onUpdateTodo(todo)}
+            />
+            <Label completed={todo.isDone}>{todo.label}</Label>
+            <DeleteButton onClick={() => onDeleteTodo(todo.id)} />
+          </Item>
+        )
+      })}
     </Container>
   )
 }

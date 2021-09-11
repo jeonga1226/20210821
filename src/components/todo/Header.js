@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div``
@@ -38,11 +38,29 @@ const Input = styled.input`
   box-sizing: border-box;
 `
 
-function Header() {
+function Header({ onAddTodo }) {
+  const [label, setLabel] = useState('')
+
+  // 라벨을 변경시키는 함수구나... 짐작
+  const handleLabel = (event) => {
+    setLabel(event.target.value) // 지금 input의 값으로 label을 바꿀거다
+  }
+
+  // 엔터키 감지
+  const handleEnter = (event) => {
+    if (event.key === 'Enter') {
+      // label 데이터를 서버로 보내서 추가 되어야함
+      // 헤더 값을 형제값인 body에 준다
+      // 부모로부터 받은 함수에 자신의 값을 넘겨준다
+      onAddTodo(label)
+      setLabel('') // 비워주면 label이 비면서 input 도 비어짐 => 양방향 데이터 바인딩
+    }
+  }
+
   return (
     <Container>
       <CheckButton a={10} b={20} Checked={true} />
-      <Input />
+      <Input value={label} onChange={handleLabel} onKeyPress={handleEnter} />
     </Container>
   )
 }
